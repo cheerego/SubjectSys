@@ -30,7 +30,7 @@ AppAsset::register($this);
     $session->open();
     NavBar::begin([
         'brandLabel' => 'Selecting Subjects System',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandUrl' => Url::toRoute('index/index'),
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
