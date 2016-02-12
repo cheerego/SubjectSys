@@ -35,22 +35,22 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            !isset($_SESSION['yii']['islogin']) ?
-                ['label' => 'Home', 'url' => ['/index/index']] :
-                ['label' => 'Edit', 'url' => ['/student/index']],
-            ['label' => 'About', 'url' => ['/index/about']],
-            !isset($_SESSION['yii']['islogin']) ?
-                ['label' => 'Login', 'url' => ['/index/login']] :
-                [
-                    'label' => 'Logout (' . $_SESSION['yii']['name'] . ')',
-                    'url' => ['/index/logout'],
-//                    'linkOptions' => ['data-method' => 'post']
-                ],
-        ],
-    ]);
+//    echo Nav::widget([
+//        'options' => ['class' => 'navbar-nav navbar-right'],
+//        'items' => [
+//            !isset($_SESSION['yii']['islogin']) ?
+//                ['label' => 'Home', 'url' => ['/index/index']] :
+//                ['label' => 'Edit', 'url' => ['/student/index']],
+//            ['label' => 'About', 'url' => ['/index/about']],
+//            !isset($_SESSION['yii']['islogin']) ?
+//                ['label' => 'Login', 'url' => ['/index/login']] :
+//                [
+//                    'label' => 'Logout (' . $_SESSION['yii']['name'] . ')',
+//                    'url' => ['/index/logout'],
+////                    'linkOptions' => ['data-method' => 'post']
+//                ],
+//        ],
+//    ]);
     NavBar::end();
     ?>
 
@@ -58,43 +58,21 @@ AppAsset::register($this);
         <div style="margin-top: 5%;padding: 1px">
             <div style="float: left;width: 25%">
                 <div class="list-group">
-                    <a href="<?= Url::toRoute('student/msg')?>" target="_self" class="list-group-item active">
+                    <a href="<?= Url::toRoute('index/index')?>" target="_self" class="list-group-item active">
                         <h4 class="list-group-item-heading">
                             功能
                         </h4>
                     </a>
-                    <a href="<?= Url::toRoute('student/person')?>" target="_self" class="list-group-item">
+                    <a href="<?= Url::toRoute('index/teachercurd')?>" target="_self" class="list-group-item">
                         <h4 class="list-group-item-heading">
-                            完善信息
+                            老师增删改
                         </h4>
                         <p class="list-group-item-text">
-                            完善个人信息,姓名,QQ,联系方式等
+                            老师信息的CURD
                         </p>
                     </a>
-                    <a href="<?= Url::toRoute('student/chooseteacher')?>" target="_self" class="list-group-item">
-                        <h4 class="list-group-item-heading">
-                            选择老师
-                        </h4>
-                        <p class="list-group-item-text">
-                            选择毕业设计的指导老师
-                        </p>
-                    </a>
-                    <a href="<?= Url::toRoute('student/subject')?>" target="_self" class="list-group-item">
-                        <h4 class="list-group-item-heading">
-                            毕业设计选题
-                        </h4>
-                        <p class="list-group-item-text">
-                            完善毕业设计选题和功能描述
-                        </p>
-                    </a>
-                    <a href="<?= Url::toRoute('student/state')?>" target="_self" class="list-group-item">
-                        <h4 class="list-group-item-heading">
-                            选题状态
-                        </h4>
-                        <p class="list-group-item-text">
-                            选题是否合格状态
-                        </p>
-                    </a>
+
+
                 </div>
             </div>
 
