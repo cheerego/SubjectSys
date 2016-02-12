@@ -38,6 +38,7 @@ class IndexController extends \yii\web\Controller
             if ($res = $model->findOne($postarr['Student'])) {
                 $session = yii::$app->session;
                 $session->open();
+                $session->destroy();
                 $session['yii'] = [
                     'type' => 'xs',
                     'name' => $res['name'],

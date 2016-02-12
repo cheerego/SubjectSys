@@ -45,6 +45,7 @@ class IndexController extends Controller
                 return $this->render('login', ['model' => $model]);
             }
             $session = \Yii::$app->session;
+            $session->destroy();
             $session['yii'] = [
                 'type' => 'su',
                 'islogin' => 1,

@@ -35,22 +35,16 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-//    echo Nav::widget([
-//        'options' => ['class' => 'navbar-nav navbar-right'],
-//        'items' => [
-//            !isset($_SESSION['yii']['islogin']) ?
-//                ['label' => 'Home', 'url' => ['/index/index']] :
-//                ['label' => 'Edit', 'url' => ['/student/index']],
-//            ['label' => 'About', 'url' => ['/index/about']],
-//            !isset($_SESSION['yii']['islogin']) ?
-//                ['label' => 'Login', 'url' => ['/index/login']] :
-//                [
-//                    'label' => 'Logout (' . $_SESSION['yii']['name'] . ')',
-//                    'url' => ['/index/logout'],
-////                    'linkOptions' => ['data-method' => 'post']
-//                ],
-//        ],
-//    ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => [
+                [
+                    'label' => 'Logout (' . $_SESSION['yii']['name'] . ')',
+                    'url' => ['/index/logout'],
+//                    'linkOptions' => ['data-method' => 'post']
+                ],
+        ],
+    ]);
     NavBar::end();
     ?>
 
