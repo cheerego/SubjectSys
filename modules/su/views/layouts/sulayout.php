@@ -65,7 +65,14 @@ AppAsset::register($this);
                             老师信息的CURD
                         </p>
                     </a>
-
+                    <a href="<?= Url::toRoute('index/importstudent')?>" target="_self" class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            导入学生
+                        </h4>
+                        <p class="list-group-item-text">
+                            通过Excel导入学生
+                        </p>
+                    </a>
 
                 </div>
             </div>

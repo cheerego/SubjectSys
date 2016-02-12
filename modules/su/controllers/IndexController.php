@@ -2,6 +2,7 @@
 
 namespace app\modules\su\controllers;
 
+use app\models\ExcelForm;
 use app\models\Su;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -62,5 +63,21 @@ class IndexController extends Controller
     public function actionTeachercurd()
     {
         return $this->redirect(Url::toRoute('teachercurd/index'));
+    }
+
+    public function actionImportstudent(){
+//        $exceldir = \Yii::getAlias('@app') . "/excel/";
+//        $filename = $exceldir . 'excel1.xls';
+//        $excelobj = \PHPExcel_IOFactory::load($filename);
+//        $sheetcount =  $excelobj->getSheetCount();
+//        $data = $excelobj->getSheet(2)->toArray();
+
+        if (\Yii::$app->request->isPost) {
+            echo '<pre>';
+            var_dump($_POST);
+            echo '</pre>';
+            exit();
+        }
+        return $this->render('importstudent',['model'=>new ExcelForm()]);
     }
 }
