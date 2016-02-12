@@ -47,7 +47,8 @@ class IndexController extends Controller
             $session = \Yii::$app->session;
             $session['yii'] = [
                 'type' => 'su',
-                'islogin' => 1
+                'islogin' => 1,
+                'name'=>'su'
             ];
             return $this->redirect(Url::toRoute('index/index'));
         } else {
