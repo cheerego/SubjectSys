@@ -61,6 +61,6 @@ class IndexController extends \yii\web\Controller
         $session  = Yii::$app->session;
         $session->open();
         $session->destroy();
-        return $this->render('index');
+        return $this->redirect(Url::toRoute('index/index'));
     }
 }
