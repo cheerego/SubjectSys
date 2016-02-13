@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = '编辑选题';
     <input type="hidden" name="html">
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+        <a class="btn btn-danger pull-right" href="https://en.wikipedia.org/wiki/Markdown#Example" target="_self">Markdown语法介绍</a>
     </div>
     <?php ActiveForm::end(); ?>
 
