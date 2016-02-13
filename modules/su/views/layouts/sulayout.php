@@ -57,6 +57,14 @@ AppAsset::register($this);
                             功能
                         </h4>
                     </a>
+                    <a href="<?= Url::toRoute('index/editmsg')?>" target="_self" class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            编辑信息界面
+                        </h4>
+                        <p class="list-group-item-text">
+                            学生登录后的信息展示界面
+                        </p>
+                    </a>
                     <a href="<?= Url::toRoute('index/teachercurd')?>" target="_self" class="list-group-item">
                         <h4 class="list-group-item-heading">
                             老师增删改

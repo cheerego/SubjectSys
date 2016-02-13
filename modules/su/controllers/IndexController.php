@@ -3,9 +3,11 @@
 namespace app\modules\su\controllers;
 
 use app\models\ExcelForm;
+use app\models\Msg;
 use app\models\Su;
 use yii\helpers\Url;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class IndexController extends Controller
 {
@@ -50,7 +52,7 @@ class IndexController extends Controller
             $session['yii'] = [
                 'type' => 'su',
                 'islogin' => 1,
-                'name'=>'su'
+                'name' => 'su'
             ];
             return $this->redirect(Url::toRoute('index/index'));
         } else {
@@ -65,19 +67,33 @@ class IndexController extends Controller
         return $this->redirect(Url::toRoute('teachercurd/index'));
     }
 
-    public function actionImportstudent(){
-//        $exceldir = \Yii::getAlias('@app') . "/excel/";
+    public function actionImportstudent()
+    {
+        $exceldir = \Yii::getAlias('@app') . "/excel/";
 //        $filename = $exceldir . 'excel1.xls';
 //        $excelobj = \PHPExcel_IOFactory::load($filename);
 //        $sheetcount =  $excelobj->getSheetCount();
 //        $data = $excelobj->getSheet(2)->toArray();
-
+        $model = new ExcelForm();
         if (\Yii::$app->request->isPost) {
-            echo '<pre>';
-            var_dump($_POST);
-            echo '</pre>';
-            exit();
+            $model->excel = UploadedFile::getInstance($model, 'excel');
+            if ($model->validate()) {
+//                $model->file->saveAs('uploads/' . $model->file->baseName . '.' . $model->file->extension);
+                echo  $model->excel->baseName.'.'.$model->excel->extension;
+                exit();
+            }
         }
-        return $this->render('importstudent',['model'=>new ExcelForm()]);
+
+        return $this->render('importstudent', ['model' => $model]);
+    }
+    public function actionEditmsg(){
+        $model = (Msg::findOne(['id'=>1]!=null)?Msg::findOne(['id'=>'1']):(new Msg()));
+        if (\Yii::$app->request->isPost) {
+            $post = \Yii::$app->request->post();
+            $model->content = $post['Msg']['content'];
+            $model->html = $post['Msg']['html'];
+            $model->save();
+        }
+        return $this->render('editmsg',['model'=>$model]);
     }
 }

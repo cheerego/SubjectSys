@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 
 $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-<?= $form->field($model, 'file')->fileInput() ?>
+<?= $form->field($model, 'excel')->fileInput() ?>
 
 <?=\yii\helpers\Html::submitButton('Submit',['class'=>'btn btn-success'])?>
 

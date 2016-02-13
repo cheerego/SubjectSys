@@ -18,7 +18,7 @@ class ExcelForm extends Model
     /**
      * @var UploadedFile|Null file attribute
      */
-    public $file;
+    public $excel;
 
     /**
      * @return array the validation rules.
@@ -26,7 +26,7 @@ class ExcelForm extends Model
     public function rules()
     {
         return [
-            [['file'], 'file'],
+            [['excel'], 'file'],
         ];
     }
 }
