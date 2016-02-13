@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -38,11 +39,11 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-                [
-                    'label' => 'Logout (' . $_SESSION['yii']['name'] . ')',
-                    'url' => ['/index/logout'],
+            [
+                'label' => 'Logout (' . $_SESSION['yii']['name'] . ')',
+                'url' => ['/index/logout'],
 //                    'linkOptions' => ['data-method' => 'post']
-                ],
+            ],
         ],
     ]);
     NavBar::end();
@@ -52,12 +53,12 @@ AppAsset::register($this);
         <div style="margin-top: 5%;padding: 1px">
             <div style="float: left;width: 25%">
                 <div class="list-group">
-                    <a href="<?= Url::toRoute('index/index')?>" target="_self" class="list-group-item active">
+                    <a href="<?= Url::toRoute('index/index') ?>" target="_self" class="list-group-item active">
                         <h4 class="list-group-item-heading">
                             功能
                         </h4>
                     </a>
-                    <a href="<?= Url::toRoute('index/editmsg')?>" target="_self" class="list-group-item">
+                    <a href="<?= Url::toRoute('index/editmsg') ?>" target="_self" class="list-group-item">
                         <h4 class="list-group-item-heading">
                             编辑信息界面
                         </h4>
@@ -65,7 +66,7 @@ AppAsset::register($this);
                             学生登录后的信息展示界面
                         </p>
                     </a>
-                    <a href="<?= Url::toRoute('index/teachercurd')?>" target="_self" class="list-group-item">
+                    <a href="<?= Url::toRoute('index/teachercurd') ?>" target="_self" class="list-group-item">
                         <h4 class="list-group-item-heading">
                             老师增删改
                         </h4>
@@ -73,12 +74,20 @@ AppAsset::register($this);
                             老师信息的CURD
                         </p>
                     </a>
-                    <a href="<?= Url::toRoute('index/importstudent')?>" target="_self" class="list-group-item">
+                    <a href="<?= Url::toRoute('index/importstudent') ?>" target="_self" class="list-group-item">
                         <h4 class="list-group-item-heading">
                             导入学生
                         </h4>
                         <p class="list-group-item-text">
                             通过Excel导入学生
+                        </p>
+                    </a>
+                    <a href="<?= Url::toRoute('index/deletedata') ?>" target="_self" class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            删除数据
+                        </h4>
+                        <p class="list-group-item-text">
+                            删除老师,学生数据
                         </p>
                     </a>
 
@@ -89,7 +98,7 @@ AppAsset::register($this);
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
-                <?= $content?>
+                <?= $content ?>
             </div>
 
         </div>
