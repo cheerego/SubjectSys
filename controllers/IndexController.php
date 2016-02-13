@@ -29,6 +29,10 @@ class IndexController extends \yii\web\Controller
 
     public function actionLogin()
     {
+        $session = Yii::$app->session;
+        if ($session['yii']['type']=='xs'&&$session['yii']['islogin']) {
+            return $this->redirect(Url::toRoute('student/index'));
+        }
         $model = new Student();
         $postarr = yii::$app->request->post();
         //如果post数组为空这直接显示login界面
