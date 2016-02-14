@@ -14,9 +14,10 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Su */
 /* @var $form ActiveForm */
+$this->title = 'Super Manager Login'
 ?>
 <div class="site-sulogin" style="margin-top: 5%">
-
+    <h1><?= Html::encode($this->title) ?></h1>
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'username') ?>

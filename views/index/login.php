@@ -11,9 +11,10 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Student */
 /* @var $form ActiveForm */
+$this->title = "Student login";
 ?>
 <div class="index-login" style="margin-top: 5%">
-
+    <h1><?= Html::encode($this->title) ?></h1>
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'num')->label('学号')->textInput() ?>
     <?= $form->field($model, 'pwd')->label('密码')->passwordInput() ?>

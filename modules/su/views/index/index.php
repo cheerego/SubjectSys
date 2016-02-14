@@ -9,5 +9,5 @@
         You may customize this page by editing the following file:<br>
         <code><?= __FILE__ ?></code>
     </p>
-    asdasdasd
+    你能看到这个界面说明你是管理员!
 </div>
