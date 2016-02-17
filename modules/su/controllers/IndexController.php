@@ -4,8 +4,10 @@ namespace app\modules\su\controllers;
 
 use app\models\ExcelForm;
 use app\models\Msg;
+use app\models\Student;
 use app\models\Su;
 use yii\helpers\Url;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 
@@ -103,4 +105,16 @@ class IndexController extends Controller
         }
         return $this->render('editmsg', ['model' => $model]);
     }
+
+
+    public function actionDeletedata()
+    {
+        if (\Yii::$app->request->isAjax) {
+            echo Student::deleteAll();
+            exit();
+        }
+        return $this->render('deletedata');
+    }
+
+
 }
