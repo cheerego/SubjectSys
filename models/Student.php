@@ -11,12 +11,14 @@ use Yii;
  * @property integer $num
  * @property string $pwd
  * @property string $name
+ * @property string $ispusher
  * @property integer $isselect
- * @property integer $ispusher
  * @property integer $qq
- * @property integer $phone
+ * @property string $phone
+ * @property integer $teacher_id
  *
- * @property Subject[] $subjects
+ * @property Pusher $pusher
+ * @property Subject $subject
  */
 class Student extends \yii\db\ActiveRecord
 {
@@ -34,11 +36,11 @@ class Student extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['num', 'isselect', 'qq', 'phone','ispusher'], 'integer'],
+            [['num', 'isselect', 'qq', 'teacher_id'], 'integer'],
             [['pwd'], 'string', 'max' => 16],
-            [['name'], 'string', 'max' => 255],
-            [['num'], 'unique'],
-
+            [['name', 'ispusher'], 'string', 'max' => 255],
+            [['phone'], 'string', 'max' => 11],
+            [['num'], 'unique']
         ];
     }
 
@@ -48,22 +50,31 @@ class Student extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'id',
-            'num' => '学号',
-            'pwd' => '密码',
-            'name' => '姓名',
+            'id' => 'ID',
+            'num' => 'Num',
+            'pwd' => 'Pwd',
+            'name' => 'Name',
+            'ispusher' => 'Ispusher',
             'isselect' => 'Isselect',
-            'qq' => 'QQ',
-            'phone' => '电话',
-            'ispusher'=>'Ispusher'
+            'qq' => 'Qq',
+            'phone' => 'Phone',
+            'teacher_id' => 'Teacher ID',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSubjects()
+    public function getPusher()
     {
-        return $this->hasMany(Subject::className(), ['student_id' => 'id']);
+        return $this->hasOne(Pusher::className(), ['student_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSubject()
+    {
+        return $this->hasOne(Subject::className(), ['student_id' => 'id']);
     }
 }

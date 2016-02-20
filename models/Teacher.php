@@ -17,7 +17,6 @@ use Yii;
  * @property integer $qqgroup
  * @property integer $current
  * @property integer $total
- *
  * @property Pusher[] $pushers
  * @property Subject[] $subjects
  */

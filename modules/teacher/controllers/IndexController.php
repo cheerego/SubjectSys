@@ -4,13 +4,13 @@ namespace app\modules\teacher\controllers;
 
 use app\models\Teacher;
 use yii\helpers\Url;
-use yii\helpers\VarDumper;
 use yii\web\Controller;
 use Yii;
 
 class IndexController extends Controller
 {
     public $layout = "teacherlayout";
+
     public function beforeAction($action)
     {
         /**
@@ -40,13 +40,13 @@ class IndexController extends Controller
 
     public function actionLogin()
     {
-        $this->layout='main';
+        $this->layout = 'main';
         if (\Yii::$app->request->isPost) {
             $post = Yii::$app->request->post();
             $model = Teacher::findOne($post['Teacher']);
             if (empty($model)) {
                 $model = new Teacher();
-                $model->num=$post['Teacher']['num'];
+                $model->num = $post['Teacher']['num'];
                 return $this->render('login', ['model' => $model]);
             }
             $session = \Yii::$app->session;
@@ -55,8 +55,8 @@ class IndexController extends Controller
             $session['yii'] = [
                 'type' => 't',
                 'islogin' => 1,
-                'id'=>$model->id,
-                'num'=>$model->num,
+                'id' => $model->id,
+                'num' => $model->num,
                 'name' => $model->name
             ];
             return $this->redirect(Url::toRoute('index/index'));
@@ -71,7 +71,24 @@ class IndexController extends Controller
      */
     public function actionEdit()
     {
+        $session = Yii::$app->session;
+        $id = $session['yii']['id'];
+        $model = Teacher::findOne(['id' => $id]);
+        if (Yii::$app->request->isPost) {
+            $post = Yii::$app->request->post();
+            $model->num=$post['Teacher']['num'];
+            $model->pwd=$post['Teacher']['pwd'];
+            $model->name=$post['Teacher']['name'];
+            $model->phonenum=$post['Teacher']['phonenum'];
+            $model->qq=$post['Teacher']['qq'];
+            $model->email=$post['Teacher']['email'];
+            $model->qqgroup=$post['Teacher']['qqgroup'];
+            $model->total=$post['Teacher']['total'];
+            $model->save();
+            return $this->render('edit', ['model' => $model]);
+        }
 
+        return $this->render('edit', ['model' => $model]);
     }
 
     /**
@@ -79,6 +96,7 @@ class IndexController extends Controller
      */
     public function actionRelative()
     {
+
     }
 
     /**

@@ -10,6 +10,9 @@ use Yii;
  * @property integer $id
  * @property integer $student_id
  * @property integer $teacher_id
+ *
+ * @property Student $student
+ * @property Teacher $teacher
  */
 class Pusher extends \yii\db\ActiveRecord
 {
@@ -43,5 +46,21 @@ class Pusher extends \yii\db\ActiveRecord
             'student_id' => 'Student ID',
             'teacher_id' => 'Teacher ID',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStudent()
+    {
+        return $this->hasOne(Student::className(), ['id' => 'student_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTeacher()
+    {
+        return $this->hasOne(Teacher::className(), ['id' => 'teacher_id']);
     }
 }
