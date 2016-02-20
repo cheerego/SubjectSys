@@ -42,7 +42,7 @@ class IndexController extends \yii\web\Controller
             if ($res = $model->findOne($postarr['Student'])) {
                 $session = yii::$app->session;
                 $session->open();
-                $session->destroy();
+                $session->remove('yii');
                 $session['yii'] = [
                     'type' => 'xs',
                     'name' => $res['name'],
@@ -53,6 +53,7 @@ class IndexController extends \yii\web\Controller
                 return $this->redirect(Url::toRoute(['/student/index']));
             } else {
                 //fail
+                $model->num = $postarr['Student']['num'];
                 return $this->render('login', ['model' => $model, 'msg' => '学号或密码错误']);
             }
         }

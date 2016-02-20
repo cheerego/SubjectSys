@@ -44,13 +44,15 @@ class IndexController extends Controller
     {
         $this->layout = 'main';
         if (\Yii::$app->request->isPost) {
-            $model = Su::findOne($_POST['Su']);
+            $post = \Yii::$app->request->post();
+            $model = Su::findOne($post['Su']);
             if (empty($model)) {
                 $model = new Su();
+                $model->username = $post['Su']['username'];
                 return $this->render('login', ['model' => $model]);
             }
             $session = \Yii::$app->session;
-            $session->destroy();
+            $session->remove('yii');
             $session['yii'] = [
                 'type' => 'su',
                 'islogin' => 1,
