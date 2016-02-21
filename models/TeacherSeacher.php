@@ -25,6 +25,9 @@ class TeacherSeacher extends Teacher
 
     /**
      * @inheritdoc
+     * 不同的场景字段验证规则是不一样得到
+     * 这个方法的作用就是取消父类的验证规则,
+     * 在这个场景中比如说不需要required这个规则
      */
     public function scenarios()
     {
@@ -42,9 +45,18 @@ class TeacherSeacher extends Teacher
     public function search($params)
     {
         $query = Teacher::find();
-
+        //在weixi的视频中设置了排序和每一页的数目
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 5
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_ASC,
+                    'name' => SORT_ASC
+                ]
+            ]
         ]);
 
         $this->load($params);
@@ -54,7 +66,9 @@ class TeacherSeacher extends Teacher
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        /**
+         * 数字类型sql语句就是=
+         */
         $query->andFilterWhere([
             'id' => $this->id,
             'num' => $this->num,
@@ -63,7 +77,9 @@ class TeacherSeacher extends Teacher
             'current' => $this->current,
             'total' => $this->total,
         ]);
-
+        /**
+         * string类型的sql就是like
+         */
         $query->andFilterWhere(['like', 'pwd', $this->pwd])
             ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'qq', $this->qq])
