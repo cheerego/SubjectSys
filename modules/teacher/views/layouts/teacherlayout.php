@@ -66,7 +66,7 @@ AppAsset::register($this);
                             联系方式的修改
                         </p>
                     </a>
-                    <a href="<?= Url::toRoute('index/teachercurd') ?>" target="_self" class="list-group-item">
+                    <a href="<?= Url::toRoute('index/pusher') ?>" target="_self" class="list-group-item">
                         <h4 class="list-group-item-heading">
                             查看请求
                         </h4>
@@ -79,7 +79,7 @@ AppAsset::register($this);
                             关系信息
                         </h4>
                         <p class="list-group-item-text">
-
+                            已建立的Relative
                         </p>
                     </a>
                     <a href="<?= Url::toRoute('index/deletedata') ?>" target="_self" class="list-group-item">

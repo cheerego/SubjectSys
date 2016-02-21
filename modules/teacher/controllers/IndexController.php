@@ -3,7 +3,10 @@
 namespace app\modules\teacher\controllers;
 
 use app\models\Pusher;
+use app\models\Relative;
+use app\models\Student;
 use app\models\Teacher;
+use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\Controller;
 use Yii;
@@ -110,6 +113,48 @@ class IndexController extends Controller
         echo '</pre>';
 
         exit();
+    }
+    public function actionPusher(){
+        $dataProvider = new ActiveDataProvider([
+            'query' => Pusher::find()->orderBy(['id'=>'DESC']),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+        return $this->render('pusher',['dataProvider'=>$dataProvider]);
+    }
+    public function actionRefuse($stuid,$pusherid){
+        $pusher = Pusher::findOne(['id'=>$pusherid]);
+        $student = $pusher->student;
+        $student->ispusher = null;
+        $pusher->delete();
+        $student->save();
+
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
+    /**
+     * @param $stuid
+     * @param $pusherid
+     * @return \yii\web\Response
+     * student->isselect
+     * relative->insert
+     * pusher->delete
+     * teacher->current++
+     */
+    public function actionReceive($stuid,$pusherid){
+        $session  = Yii::$app->session;
+        Pusher::deleteAll(['id'=>$pusherid]);
+        $student = Student::findOne(['id'=>$stuid]);
+        $student->isselect = 1;
+        $student->save();
+
+        $relative = new Relative();
+        $relative->student_id = $stuid;
+        $relative->teacher_id = $session['yii']['id'];
+        $relative->save();
+
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**
