@@ -1,8 +1,7 @@
-Yii 2 Basic Project Template
+Yii 2 基本应用程序模板
 ============================
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+[Yii 2](http://www.yiiframework.com/)基本项目模板是一个骨架  应用有助于快速的创建小型应用
 
 The template contains the basic features including user login/logout and a contact page.
 It includes all commonly used configurations that would allow you to focus on adding new
