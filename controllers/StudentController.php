@@ -119,6 +119,7 @@ class StudentController extends Controller
             $pusher = new Pusher();
             $pusher->student_id = $model->id;
             $pusher->teacher_id = Yii::$app->request->post('id');
+            $pusher->save();
             return $this->render('chooseteacher', ['teacherlist' => $teacherlist, 'isselect' => $isselect, 'ispusher' => 1]);
         }
         return $this->render('chooseteacher', [
