@@ -3,6 +3,7 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
+    'language' =>'zh-CN',
     'id' => 'basic',
     'defaultRoute' => 'index',
     'basePath' => dirname(__DIR__),
