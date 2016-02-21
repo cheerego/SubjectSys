@@ -6,7 +6,10 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Teacher */
 /* @var $form ActiveForm */
+$this->params['breadcrumbs'][]=$_SESSION['yii']['name'];
+$this->params['breadcrumbs'][]='个人信息';
 ?>
+
 <div class="modules-teacher-view-edit">
 
     <?php $form = ActiveForm::begin(); ?>
