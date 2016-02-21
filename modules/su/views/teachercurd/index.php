@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
+            //就是#那一列
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
@@ -35,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'qqgroup',
             // 'current',
             // 'total',
-
+            //动作那一列  CURD
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
