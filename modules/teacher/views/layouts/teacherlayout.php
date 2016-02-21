@@ -68,18 +68,18 @@ AppAsset::register($this);
                     </a>
                     <a href="<?= Url::toRoute('index/teachercurd') ?>" target="_self" class="list-group-item">
                         <h4 class="list-group-item-heading">
-                            老师增删改
+                            查看请求
                         </h4>
                         <p class="list-group-item-text">
-                            老师信息的CURD
+                            查看学生提交的请求
                         </p>
                     </a>
                     <a href="<?= Url::toRoute('index/importstudent') ?>" target="_self" class="list-group-item">
                         <h4 class="list-group-item-heading">
-                            导入学生
+                            关系信息
                         </h4>
                         <p class="list-group-item-text">
-                            通过Excel导入学生
+
                         </p>
                     </a>
                     <a href="<?= Url::toRoute('index/deletedata') ?>" target="_self" class="list-group-item">

@@ -2,6 +2,7 @@
 
 namespace app\modules\teacher\controllers;
 
+use app\models\Pusher;
 use app\models\Teacher;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -96,7 +97,19 @@ class IndexController extends Controller
      */
     public function actionRelative()
     {
+        /**
+         * 先查看pusher表
+         * 看有没有请求
+         */
+        $session = Yii::$app->session;
+//        $models = Pusher::findAll(['teacher_id'=>$session['yii']['id']]);
+//        var_dump($models);
+        $model = Pusher::findOne(['teacher_id'=>$session['yii']['id']]);
+        echo '<pre>';
+        var_dump($model->student->pwd);
+        echo '</pre>';
 
+        exit();
     }
 
     /**
