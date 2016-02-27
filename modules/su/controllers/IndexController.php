@@ -95,8 +95,9 @@ class IndexController extends Controller
                 foreach ($data as $item) {
                     foreach ($data as $attributes) {
                         $student = clone $student;
-                        $student->name = $item[0];
-                        $student->num = $item[1];
+                        $student->num = $item[0];
+                        $student->name = $item[1];
+                        $student->pwd = $item[0];
                         $student->save();
                     }
 
