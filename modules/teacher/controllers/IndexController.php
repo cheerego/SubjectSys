@@ -171,9 +171,9 @@ class IndexController extends Controller
         return $this->redirect(Yii::$app->request->referrer);
     }
 
-    public function actionSubject()
+    public function actionSubject($stuid)
     {
-        $stuid = 1;
+
         $subject = Subject::findOne(['student_id' => $stuid]);
         if ($subject === null) {
             return $this->render('subject', ['subject' => $subject, 'info' =>0]);
