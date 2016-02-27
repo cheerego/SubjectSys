@@ -80,14 +80,14 @@ class IndexController extends Controller
         $model = Teacher::findOne(['id' => $id]);
         if (Yii::$app->request->isPost) {
             $post = Yii::$app->request->post();
-            $model->num=$post['Teacher']['num'];
-            $model->pwd=$post['Teacher']['pwd'];
-            $model->name=$post['Teacher']['name'];
-            $model->phonenum=$post['Teacher']['phonenum'];
-            $model->qq=$post['Teacher']['qq'];
-            $model->email=$post['Teacher']['email'];
-            $model->qqgroup=$post['Teacher']['qqgroup'];
-            $model->total=$post['Teacher']['total'];
+            $model->num = $post['Teacher']['num'];
+            $model->pwd = $post['Teacher']['pwd'];
+            $model->name = $post['Teacher']['name'];
+            $model->phonenum = $post['Teacher']['phonenum'];
+            $model->qq = $post['Teacher']['qq'];
+            $model->email = $post['Teacher']['email'];
+            $model->qqgroup = $post['Teacher']['qqgroup'];
+            $model->total = $post['Teacher']['total'];
             $model->save();
             return $this->render('edit', ['model' => $model]);
         }
@@ -100,33 +100,33 @@ class IndexController extends Controller
      */
     public function actionRelative()
     {
-        /**
-         * 先查看pusher表
-         * 看有没有请求
-         */
         $session = Yii::$app->session;
-//        $models = Pusher::findAll(['teacher_id'=>$session['yii']['id']]);
-//        var_dump($models);
-        $model = Pusher::findOne(['teacher_id'=>$session['yii']['id']]);
-        echo '<pre>';
-        var_dump($model->student->pwd);
-        echo '</pre>';
-
-        exit();
-    }
-    public function actionPusher(){
         $dataProvider = new ActiveDataProvider([
-            'query' => Pusher::find()->orderBy(['id'=>'DESC']),
+            'query' => Relative::find()->where(['teacher_id' => $session['yii']['id']])->orderBy(['id' => 'DESC']),
             'pagination' => [
                 'pageSize' => 10,
             ],
         ]);
-        return $this->render('pusher',['dataProvider'=>$dataProvider]);
+        return $this->render('relative', ['dataProvider' => $dataProvider]);
     }
-    public function actionRefuse($stuid,$pusherid){
-        $pusher = Pusher::findOne(['id'=>$pusherid]);
+
+    public function actionPusher()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Pusher::find()->orderBy(['id' => 'DESC']),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+        return $this->render('pusher', ['dataProvider' => $dataProvider]);
+    }
+
+    public function actionRefuse($stuid, $pusherid)
+    {
+        $pusher = Pusher::findOne(['id' => $pusherid]);
         $student = $pusher->student;
         $student->ispusher = null;
+        $student->isselect = null;
         $pusher->delete();
         $student->save();
 
@@ -142,10 +142,11 @@ class IndexController extends Controller
      * pusher->delete
      * teacher->current++
      */
-    public function actionReceive($stuid,$pusherid){
-        $session  = Yii::$app->session;
-        Pusher::deleteAll(['id'=>$pusherid]);
-        $student = Student::findOne(['id'=>$stuid]);
+    public function actionReceive($stuid, $pusherid)
+    {
+        $session = Yii::$app->session;
+        Pusher::deleteAll(['id' => $pusherid]);
+        $student = Student::findOne(['id' => $stuid]);
         $student->isselect = 1;
         $student->save();
 
@@ -157,11 +158,15 @@ class IndexController extends Controller
         return $this->redirect(Yii::$app->request->referrer);
     }
 
-    /**
-     * 检查学生的毕业设计选题是否合格
-     */
-    public function actionSubjectok()
+    public function actionDeleterelative($stuid)
     {
-
+        $student = Student::findOne(['id'=>$stuid]);
+        $student->ispusher = null;
+        $student->isselect = null;
+        $student->save();
+        $relative = $student->relative;
+        $relative->delete();
+        return $this->redirect(Yii::$app->request->referrer);
     }
+
 }

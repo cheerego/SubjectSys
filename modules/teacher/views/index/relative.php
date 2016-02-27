@@ -7,8 +7,9 @@
  */
 use yii\widgets\ListView;
 use yii\data\ActiveDataProvider;
-
+$this->params['breadcrumbs'][]=$_SESSION['yii']['name'];
+$this->params['breadcrumbs'][]='查看关系';
 echo ListView::widget([
     'dataProvider' => $dataProvider,
-    'itemView' => '_post',
+    'itemView' => 'relativeitem',
 ]);

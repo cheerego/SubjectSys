@@ -74,20 +74,12 @@ AppAsset::register($this);
                             查看学生提交的请求
                         </p>
                     </a>
-                    <a href="<?= Url::toRoute('index/importstudent') ?>" target="_self" class="list-group-item">
+                    <a href="<?= Url::toRoute('index/relative') ?>" target="_self" class="list-group-item">
                         <h4 class="list-group-item-heading">
                             关系信息
                         </h4>
                         <p class="list-group-item-text">
                             已建立的Relative
-                        </p>
-                    </a>
-                    <a href="<?= Url::toRoute('index/deletedata') ?>" target="_self" class="list-group-item">
-                        <h4 class="list-group-item-heading">
-                            删除数据
-                        </h4>
-                        <p class="list-group-item-text">
-                            删除老师,学生数据
                         </p>
                     </a>
 

@@ -6,16 +6,29 @@
  * Time: 下午7:16
  */
 
-use yii\helpers\Html;
-use yii\helpers\HtmlPurifier;
-$student= $model->student;
-var_dump($student);
+$student = $model->student;
 ?>
-<div class="post">
-    <h2><?= Html::encode($model->id) ?></h2>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>QQ</th>
+        <th>电话</th>
+        <th class="pull-right">操作</th>
+    </tr>
 
-    <?= HtmlPurifier::process($model->teacher_id) ?>
-    <?= HtmlPurifier::process($model->student_id) ?>
-    <?= $student->name?>
+    </thead>
+    <tbody>
+    <tr>
+        <td><?= $student->num ?></td>
+        <td><?= $student->name ?></td>
+        <td><?= empty($student->qq)?"未填写":$student->qq ?></td>
+        <td><?= empty($student->phone)?"未填写":$student->phone ?></td>
+        <td>
+            <a class="btn btn-danger pull-right" style="margin-left: 1%" href="<?=\yii\helpers\Url::toRoute(['index/deleterelative','stuid'=>$student->id])?>">删除关系</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
-</div>
