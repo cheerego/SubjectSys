@@ -87,14 +87,14 @@ AppAsset::register($this);
                             完善毕业设计选题和功能描述
                         </p>
                     </a>
-                    <a href="<?= Url::toRoute('student/state')?>" target="_self" class="list-group-item">
-                        <h4 class="list-group-item-heading">
-                            选题状态
-                        </h4>
-                        <p class="list-group-item-text">
-                            选题是否合格状态
-                        </p>
-                    </a>
+<!--                    <a href="--><?//= Url::toRoute('student/state')?><!--" target="_self" class="list-group-item">-->
+<!--                        <h4 class="list-group-item-heading">-->
+<!--                            选题状态-->
+<!--                        </h4>-->
+<!--                        <p class="list-group-item-text">-->
+<!--                            选题是否合格状态-->
+<!--                        </p>-->
+<!--                    </a>-->
                 </div>
             </div>
 

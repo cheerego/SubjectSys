@@ -78,18 +78,31 @@ class IndexController extends Controller
     public function actionImportstudent()
     {
         //TODO
-        $exceldir = \Yii::getAlias('@app') . "/excel/";
+        //$exceldir = \Yii::getAlias('@app') . "/excel/";
 //        $filename = $exceldir . 'excel1.xls';
-//        $excelobj = \PHPExcel_IOFactory::load($filename);
-//        $sheetcount =  $excelobj->getSheetCount();
-//        $data = $excelobj->getSheet(2)->toArray();
+
         $model = new ExcelForm();
         if (\Yii::$app->request->isPost) {
             $model->excel = UploadedFile::getInstance($model, 'excel');
-            if ($model->validate()) {
-//                $model->file->saveAs('uploads/' . $model->file->baseName . '.' . $model->file->extension);
-                echo $model->excel->baseName . '.' . $model->excel->extension;
-                exit();
+            if (($excelname = $model->upload()) != false) {
+                $excelobj = \PHPExcel_IOFactory::load($excelname);
+                $data = $excelobj->getSheet(0)->toArray();
+                $post = \Yii::$app->request->post();
+                if ($post['ExcelForm']['delete'] == true) {
+                    Student::deleteAll();
+                }
+                $student = new Student();
+                foreach ($data as $item) {
+                    foreach ($data as $attributes) {
+                        $student = clone $student;
+                        $student->name = $item[0];
+                        $student->num = $item[1];
+                        $student->save();
+                    }
+
+                }
+            } else {
+                echo 'Fail';
             }
         }
 

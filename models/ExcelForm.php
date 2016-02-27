@@ -19,14 +19,38 @@ class ExcelForm extends Model
      * @var UploadedFile|Null file attribute
      */
     public $excel;
-
+    public $delete;
     /**
      * @return array the validation rules.
      */
     public function rules()
     {
         return [
-            [['excel'], 'file'],
+            [['excel'], 'file', 'skipOnEmpty' => false, 'extensions' => 'xls,xlsx'],
+//            ['delete']
+        ];
+    }
+
+
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $exceldir = \Yii::getAlias('@app') . "/excel/";
+            $excelname = $exceldir . date('Ymd-His') . '.' . $this->excel->extension;
+            $this->excel
+                ->saveAs($excelname);
+
+            return $excelname;
+        } else {
+            return false;
+        }
+    }
+    public function attributeLabels()
+    {
+        return [
+            'excel' => 'Excel文件',
+            'delete'=>'删除全部学生数据'
         ];
     }
 }

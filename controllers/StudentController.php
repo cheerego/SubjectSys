@@ -156,18 +156,18 @@ class StudentController extends Controller
         return $this->render('subject', ['model' => $subject]);
     }
 
-    function actionState()
-    {
-        $session = Yii::$app->session;
-        $id = $session['yii']['id'];
-        $model = new Student();
-        $student = $model->findOne(['id' => $id]);
-        $ispusher = $student->ispusher;
-        $isselect = $student->isselect;
-        if ($ispusher != 1) {
-            return $this->redirect(Url::toRoute('student/chooseteacher'));
-        }
-        return $this->render('state', ['ispusher' => $ispusher, 'isselect' => $isselect]);
-
-    }
+//    function actionState()
+//    {
+//        $session = Yii::$app->session;
+//        $id = $session['yii']['id'];
+//        $model = new Student();
+//        $student = $model->findOne(['id' => $id]);
+//        $ispusher = $student->ispusher;
+//        $isselect = $student->isselect;
+//        if ($ispusher != 1) {
+//            return $this->redirect(Url::toRoute('student/chooseteacher'));
+//        }
+//        return $this->render('state', ['ispusher' => $ispusher, 'isselect' => $isselect]);
+//
+//    }
 }

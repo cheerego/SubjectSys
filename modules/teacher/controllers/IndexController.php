@@ -5,6 +5,8 @@ namespace app\modules\teacher\controllers;
 use app\models\Pusher;
 use app\models\Relative;
 use app\models\Student;
+use app\models\Su;
+use app\models\Subject;
 use app\models\Teacher;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
@@ -160,7 +162,7 @@ class IndexController extends Controller
 
     public function actionDeleterelative($stuid)
     {
-        $student = Student::findOne(['id'=>$stuid]);
+        $student = Student::findOne(['id' => $stuid]);
         $student->ispusher = null;
         $student->isselect = null;
         $student->save();
@@ -169,4 +171,15 @@ class IndexController extends Controller
         return $this->redirect(Yii::$app->request->referrer);
     }
 
+    public function actionSubject()
+    {
+        $stuid = 1;
+        $subject = Subject::findOne(['student_id' => $stuid]);
+        if ($subject === null) {
+            return $this->render('subject', ['subject' => $subject, 'info' =>0]);
+        } else {
+            return $this->render('subject', ['subject' => $subject, 'info' =>1]);
+        }
+
+    }
 }

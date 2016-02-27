@@ -26,6 +26,7 @@ $student = $model->student;
         <td><?= empty($student->qq)?"未填写":$student->qq ?></td>
         <td><?= empty($student->phone)?"未填写":$student->phone ?></td>
         <td>
+            <a class="btn btn-success pull-right" style="margin-left: 1%" href="<?=\yii\helpers\Url::toRoute(['index/subject','stuid'=>$student->id])?>">查看选题</a>
             <a class="btn btn-danger pull-right" style="margin-left: 1%" href="<?=\yii\helpers\Url::toRoute(['index/deleterelative','stuid'=>$student->id])?>">删除关系</a>
         </td>
     </tr>
