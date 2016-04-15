@@ -91,19 +91,18 @@ class IndexController extends Controller
                 if ($post['ExcelForm']['delete'] == true) {
                     Student::deleteAll();
                 }
-                $student = new Student();
+//                var_dump($data);
+//数据可以获得  当时无法插入数据
+                $db = \Yii::$app->db;
                 foreach ($data as $item) {
-                    foreach ($data as $attributes) {
-                        $student = clone $student;
-                        $student->num = $item[0];
-                        $student->name = $item[1];
-                        $student->pwd = $item[0];
-                        $student->save();
-                    }
-
+                   echo $db->createCommand('INSERT INTO `student`( `num`, `pwd`, `name`) VALUES (:num,:pwd,:name)', [
+                        ':name' => $item[1],
+                        ':num' => $item[0],
+                        ':pwd' => $item[0],
+                    ])->execute();
                 }
             } else {
-                echo 'Fail';
+                echo 'uploadFail';
             }
         }
 

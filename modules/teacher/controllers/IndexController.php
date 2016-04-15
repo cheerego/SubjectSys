@@ -114,8 +114,11 @@ class IndexController extends Controller
 
     public function actionPusher()
     {
+        $session = Yii::$app->session;
+        $id = $session['yii']['id'];
+     
         $dataProvider = new ActiveDataProvider([
-            'query' => Pusher::find()->orderBy(['id' => 'DESC']),
+            'query' => Pusher::find()->where(['teacher_id'=>$id])->orderBy(['id' => 'DESC']),
             'pagination' => [
                 'pageSize' => 10,
             ],
