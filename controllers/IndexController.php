@@ -8,6 +8,7 @@ use yii;
 
 class IndexController extends \yii\web\Controller
 {
+    //定义布局   Views/index/layout/main.php
     public $layout = 'main';
 
     public function actionIndex()
@@ -66,6 +67,7 @@ class IndexController extends \yii\web\Controller
         $session  = Yii::$app->session;
         $session->open();
         $session->destroy();
+        //重定向到  index控制器的actionindex
         return $this->redirect(Url::toRoute('index/index'));
     }
 }

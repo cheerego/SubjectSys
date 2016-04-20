@@ -39,7 +39,7 @@ class IndexController extends Controller
     {
         return $this->render('index');
     }
-
+    //su/index/login
     public function actionLogin()
     {
         $this->layout = 'main';
@@ -61,7 +61,8 @@ class IndexController extends Controller
             return $this->redirect(Url::toRoute('index/index'));
         } else {
             $model = new Su();
-            return $this->render('login', ['model' => $model]);
+            $hg = 'ls';
+            return $this->render('login', ['model' => $model,'hkn'=>$hg]);
         }
 
     }

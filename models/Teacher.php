@@ -36,7 +36,7 @@ class Teacher extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['num', 'pwd', 'current', 'total'], 'required'],
+            [['num', 'pwd','current', 'total'], 'required'],
             [['num', 'phonenum', 'qqgroup', 'current', 'total'], 'integer'],
             [['pwd', 'name', 'qq', 'email'], 'string', 'max' => 255],
             [['num'], 'unique']
@@ -50,15 +50,15 @@ class Teacher extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'num' => 'Num',
-            'pwd' => 'Pwd',
-            'name' => 'Name',
-            'phonenum' => 'Phonenum',
-            'qq' => 'Qq',
+            'num' => '老师编号',
+            'pwd' => '密码',
+            'name' => '姓名',
+            'phonenum' => '手机号',
+            'qq' => 'QQ',
             'email' => 'Email',
-            'qqgroup' => 'Qqgroup',
-            'current' => 'Current',
-            'total' => 'Total',
+            'qqgroup' => 'QQ群',
+            'current' => '当前收录人数',
+            'total' => '总收录人数',
         ];
     }
 

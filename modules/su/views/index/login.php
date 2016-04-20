@@ -27,5 +27,4 @@ $this->title = 'Super Manager Login'
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
-
 </div><!-- site-sulogin -->

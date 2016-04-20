@@ -1,13 +1,5 @@
 <div class="su-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
-    你能看到这个界面说明你是管理员!
+
+    <h1>你能看到这个界面说明你是管理员!</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad architecto dolor ex illo non rerum sed, velit veritatis. Architecto, aspernatur eaque enim iusto laudantium natus quis quisquam quod quos totam.</p>
 </div>

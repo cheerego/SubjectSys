@@ -36,6 +36,7 @@ class Student extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            ['num','required'],
             [['num', 'isselect', 'qq', 'teacher_id'], 'integer'],
             [['pwd'], 'string', 'max' => 16],
             [['name', 'ispusher'], 'string', 'max' => 255],
@@ -51,13 +52,13 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'num' => 'Num',
-            'pwd' => 'Pwd',
-            'name' => 'Name',
+            'num' => '学号',
+            'pwd' => '密码',
+            'name' => '姓名',
             'ispusher' => 'Ispusher',
             'isselect' => 'Isselect',
-            'qq' => 'Qq',
-            'phone' => 'Phone',
+            'qq' => 'QQ',
+            'phone' => '手机号',
             'teacher_id' => 'Teacher ID',
         ];
     }

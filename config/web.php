@@ -5,9 +5,12 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'language' =>'zh-CN',
     'id' => 'basic',
+    //设置默认路由
+    //默认路由会导致 每个controller的 action 都是index
     'defaultRoute' => 'index',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    //添加了两个模块
     'modules' => [
         'teacher' => [
             'class' => 'app\modules\teacher\Teacher',
@@ -19,6 +22,7 @@ $config = [
         ],
     ],
     'components' => [
+        //url美化组件  需要开启apache的rewrite模块  省略index.php
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -27,6 +31,7 @@ $config = [
 //                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>'
             ]
         ],
+        //定义前端资源的位置
         'assetManager' => [
             'bundles' => [
                 'yii\web\JqueryAsset' => [
