@@ -35,13 +35,14 @@ class Student extends \yii\db\ActiveRecord
      */
     public function rules()
     {
+        //该类通过gii脚手架生成
         return [
-            ['num','required'],
-            [['num', 'isselect', 'qq', 'teacher_id'], 'integer'],
-            [['pwd'], 'string', 'max' => 16],
+            ['num','required'],//非空
+            [['num', 'isselect', 'qq', 'teacher_id'], 'integer'],//int型
+            [['pwd'], 'string', 'max' => 16],//最大长度16
             [['name', 'ispusher'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 11],
-            [['num'], 'unique']
+            [['num'], 'unique']//学号唯一的
         ];
     }
 

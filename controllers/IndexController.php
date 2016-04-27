@@ -13,6 +13,7 @@ class IndexController extends \yii\web\Controller
 
     public function actionIndex()
     {
+        //获取session实例
         $session = yii::$app->session;
         $session->open();
         return $this->render('index');

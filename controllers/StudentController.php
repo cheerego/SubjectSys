@@ -16,6 +16,7 @@ use yii\web\Controller;
 
 class StudentController extends Controller
 {
+    //布局
     public $layout = 'studentlayout';
 
 //    public function actions()
